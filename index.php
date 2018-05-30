@@ -12,16 +12,26 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
-      </div>
+      <a class="navbar-brand">RonoltoIndia Admin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li>
+            <a class="nav-link" href="index.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="display.php">History</a>
+          </li>
+        </ul>
     </nav>
     <div class="container">
-      <h2 style="text-align: center; margin-top: 10px;">Add New Records</h2>
+      <h3 style="text-align: center; margin-top: 10px;">Add New Records</h3>
           <form action="insert.php" method="post">
             <div class="row">
                 <div class="col-sm-6">
-                  <h3 style="margin-top: 20px;">Customer Details</h3>
+                  <h4 style="margin-top: 10px;">Customer Details</h4>
                   <div class="form-group">
                     <label for="shop_name">Shop Name</label>
                     <input type="text" name="shop-name" class="form-control" id="shop_name" placeholder="Enter shop name">
@@ -36,7 +46,7 @@
                   </div>
                   <div class="form-group">
                     <label for="invoice_no">Invoice Number</label>
-                      <input class="form-control" name="invoice-no" type="number" value="1" id="invoice_no">
+                      <input class="form-control" name="invoice-no" type="number" min="0" value="1" id="invoice_no">
                   </div>
                   <form>
                   <div class="form-group">
@@ -47,73 +57,73 @@
                 </div>
                 
                 <div class="col-sm-6">
-                  <h3  style="margin-top: 20px;">Payment Details</h3>
+                  <h4 style="margin-top: 10px;">Payment Details</h4>
                   <div class="row">
                     <div class="col-sm-7">
                       <div class="form-group">
                         <label for="adv_payment">Advance Payment</label>
-                        <input type="number" name="adv-payment" class="form-control" id="adv_payment" placeholder="">
+                        <input type="number" step="any" min="0" name="adv-payment" class="form-control" id="adv_payment" placeholder="">
                       </div>
                     </div>
                     <div class="col-sm-5">
                       <div class="form-group">
-                        <label for="example-date-input">Date</label>
-                          <input class="form-control" type="date" value="" id="example-date-input">
+                        <label for="adv_date">Date</label>
+                          <input class="form-control" name="adv-date" type="date" value="" id="adv_date">
                       </div>
                     </div>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <label for="adv_payment">Installment-1</label>
-                        <input type="number" name="adv-payment" class="form-control" id="adv_payment" placeholder="">
+                        <label for="installment_1">Installment-1</label>
+                        <input type="number" step="any" min="0" name="installment-1" class="form-control" id="installment_1" placeholder="">
                       </div>
                     </div>
                     <div class="col-sm-5">
                       <div class="form-group">
-                        <label for="example-date-input">Date</label>
-                          <input class="form-control" type="date" value="" id="example-date-input">
+                        <label for="date_1">Date</label>
+                          <input class="form-control" name="date-1" type="date" value="" id="date_1">
                       </div>
                     </div>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <label for="adv_payment">Installment-2</label>
-                        <input type="number" name="adv-payment" class="form-control" id="adv_payment" placeholder="">
+                        <label for="installment_2">Installment-2</label>
+                        <input type="number" step="any" min="0" name="installment-2" class="form-control" id="installment_2" placeholder="">
                       </div>
                     </div>
                     <div class="col-sm-5">
                       <div class="form-group">
-                        <label for="example-date-input">Date</label>
-                          <input class="form-control" type="date" value="" id="example-date-input">
+                        <label for="date_2">Date</label>
+                          <input class="form-control" name="date-2" type="date" value="" id="date_2">
                       </div>
                     </div>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <label for="adv_payment">Installment-3</label>
-                        <input type="number" name="adv-payment" class="form-control" id="adv_payment" placeholder="">
+                        <label for="installment_3">Installment-3</label>
+                        <input type="number" step="any" min="0" name="installment-3" class="form-control" id="installment_3" placeholder="">
                       </div>
                     </div>
                     <div class="col-sm-5">
                       <div class="form-group">
-                        <label for="example-date-input">Date</label>
-                          <input class="form-control" type="date" value="" id="example-date-input">
+                        <label for="date_3">Date</label>
+                          <input class="form-control" name="date-3" type="date" value="" id="date-3">
                       </div>
                     </div>
                     <div class="col-sm-7">
                       <div class="form-group">
-                        <label for="adv_payment">Installment-4</label>
-                        <input type="number" name="adv-payment" class="form-control" id="adv_payment" placeholder="">
+                        <label for="installment_4">Installment-4</label>
+                        <input type="number" step="any" min="0" name="installment-4" class="form-control" id="installment_4" placeholder="">
                       </div>
                     </div>
                     <div class="col-sm-5">
                       <div class="form-group">
-                        <label for="example-date-input">Date</label>
-                          <input class="form-control" type="date" value="" id="example-date-input">
+                        <label for="date_4">Date</label>
+                          <input class="form-control" name="date-4" type="date" value="" id="date_4">
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="form-group row">
-                      <label for="total_payment" class="col-2 col-form-label">Total : </label>
+                      <label for="total_payment" class="col-2 col-form-label">Total</label>
                       <div class="col-10">
-                        <input class="form-control" type="number" id="total_payment">
+                        <input class="form-control" type="" id="total_payment">
                       </div>
                     </div> 
                     </div>

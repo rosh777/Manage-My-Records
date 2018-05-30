@@ -11,6 +11,4 @@
 		die("Error in connection.");
 	}
 
-	echo "Connection established successfully.";
-
 ?>
