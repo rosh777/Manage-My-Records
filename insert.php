@@ -32,7 +32,7 @@
 		window.location.href='index.php?success'</script>";
 	}
 	else{
-		echo "<script type='text/javascript'>alert('Something went wrong while inserting data.')
+		echo "<script type='text/javascript'>alert('Something went wrong while inserting data.');
 		window.location.href='index.php?fail'</script>";
 	}
 

@@ -62,8 +62,9 @@
             <td><?php echo $row['mobile_no']; ?></td>
             <td>₹ <?php echo $row['payment_total']; ?></td>
             <td style="text-align: center;">
-              <a href="update.php?id= <?php echo $row['id']; ?>"><button type="button" class="btn btn-outline-secondary btn-sm">Update</button></a>
-              <a href=""><button type="button" class="btn btn-outline-danger btn-sm">Delete</button></a>
+              <a href="updateform.php?id=<?php echo $row['id']; ?>"><button type="button" class="btn btn-outline-secondary btn-sm">Update</button></a>
+              
+              <a href="delete.php?id=<?php echo $row['id']; ?>"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button></a>
             </td>
           </tr>
 
