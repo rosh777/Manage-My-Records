@@ -7,10 +7,22 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Record History</title>
   </head>
   <body>
+
+    <?php
+
+      include('dbconnect.php');
+
+      // create queries to select data
+      $query = "SELECT customerdetails.id, customerdetails.shop_name, customerdetails.mobile_no, paymentdetails.adv_payment+paymentdetails.installment_1+paymentdetails.installment_2+paymentdetails.installment_3+paymentdetails.installment_4 AS payment_total FROM customerdetails, paymentdetails WHERE customerdetails.id = paymentdetails.payment_id ORDER BY customerdetails.id DESC";
+
+      $result = mysqli_query($conn, $query);
+
+    ?>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand">RonoltoIndia Admin</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,25 +42,36 @@
       <h3 style="text-align: center; margin-top: 10px;">All Records</h3>
       <table class="table table-hover">
         <thead>
-          <tr>
+          <tr style="background: gray; color: white; text-shadow: 2px 2px 5px black;">
             <th scope="col">ID</th>
             <th scope="col">Shop Name</th>
             <th scope="col">Mobile Number</th>
             <th scope="col">Total Payment</th>
-            <th scope="col">Actions</th>
+            <th style="text-align: center;" scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
+
+          <?php
+
+            while ($row = mysqli_fetch_assoc($result)) {
+          ?>
           <tr>
-            <th scope="row">1</th>
-            <td>Syam Electricals and Services, Nagpur</td>
-            <td>7774979477</td>
-            <td>10000</td>
-            <td>
-              <button type="button" class="btn btn-outline-secondary btn-sm">Update</button>
-              <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+            <th scope="row"><?php echo $row['id']; ?></th>
+            <td><?php echo $row['shop_name']; ?></td>
+            <td><?php echo $row['mobile_no']; ?></td>
+            <td>₹ <?php echo $row['payment_total']; ?></td>
+            <td style="text-align: center;">
+              <button  type="button" class="btn btn-outline-secondary btn-sm">Update</button>
+              <button  type="button" class="btn btn-outline-danger btn-sm">Delete</button>
             </td>
           </tr>
+
+          <?php
+          }
+          mysqli_close($conn);
+          ?>
+
         </tbody>
       </table>
      
