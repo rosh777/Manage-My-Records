@@ -8,9 +8,22 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-    <title>Admin.RonoltoInd</title>
+    <title>Update.Record</title>
   </head>
   <body>
+
+    <?php
+
+      include('dbconnect.php');
+
+      $id = $_GET['id'];
+
+     $query = "SELECT *, paymentdetails.adv_payment+paymentdetails.installment_1+paymentdetails.installment_2+paymentdetails.installment_3+paymentdetails.installment_4 AS payment_total FROM customerdetails, paymentdetails WHERE customerdetails.id = paymentdetails.payment_id AND customerdetails.id = '$id'";
+
+     $result = mysqli_query($conn, $query);
+
+    ?>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand">RonoltoIndia Admin</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,26 +40,33 @@
         </ul>
     </nav>
     <div class="container">
-      <h3 style="text-align: center; margin-top: 10px;">Add New Records</h3>
-          <form action="insert.php" method="post">
+      <h3 style="text-align: center; margin-top: 10px;">Update Record</h3>
+          <form>
+            <?php
+            while($row = mysqli_fetch_assoc($result)){
+
+            ?>
+              
+
             <div class="row">
                 <div class="col-sm-6">
                   <h4 style="margin-top: 10px;">Customer Details</h4>
                   <div class="form-group">
                     <label for="shop_name">Shop Name</label>
-                    <input type="text" name="shop-name" class="form-control" id="shop_name" placeholder="Enter shop name">
+                    <input type="text" class="form-control" id="shop_name" value="<?php echo $row['shop_name']; ?>">
                   </div>
                   <div class="form-group">
                     <label for="shop_add">Shop Address</label>
-                    <textarea class="form-control" name="shop-add" id="shop_add" rows="3" placeholder="Enter address of shop here"></textarea>
+                    <textarea class="form-control" name="shop-add" id="shop_add" rows="3"><?php echo $row['shop_add']; ?></textarea>
+<!--                     <input type="text" class="form-control" id="shop_add" value="<?php echo $row['shop_add']; ?>"> -->                    
                   </div>
                   <div class="form-group">
                     <label for="mobile_no">Mobile Number</label>
-                    <input type="text" name="mobile-no" class="form-control" id="mobile_no" placeholder="">
+                    <input type="text" name="mobile-no" class="form-control" id="mobile_no" value="<?php echo $row['mobile_no']; ?>">
                   </div>
                   <div class="form-group">
                     <label for="invoice_no">Invoice Number</label>
-                      <input class="form-control" name="invoice-no" type="number" min="0" value="1" id="invoice_no">
+                      <input class="form-control" name="invoice-no" type="number" min="0" id="invoice_no" value="<?php echo $row['invoice_no']; ?>">
                   </div>
                   <form>
                   <div class="form-group">
@@ -62,77 +82,82 @@
                     <div class="col-sm-7">
                       <div class="form-group">
                         <label for="adv_payment">Advance Payment</label>
-                        <input type="number" step="any" min="0" name="adv-payment" class="form-control" id="adv_payment" placeholder="">
+                        <input type="number" step="any" min="0" name="adv-payment" class="form-control" id="adv_payment" value="<?php echo $row['adv_payment']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-5">
                       <div class="form-group">
                         <label for="adv_date">Date</label>
-                          <input class="form-control" name="adv-date" type="date" value="" id="adv_date">
+                          <input class="form-control" name="adv-date" type="date" id="adv_date" value="<?php echo $row['adv_date']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-7">
                       <div class="form-group">
                         <label for="installment_1">Installment-1</label>
-                        <input type="number" step="any" min="0" name="installment-1" class="form-control" id="installment_1" placeholder="">
+                        <input type="number" step="any" min="0" name="installment-1" class="form-control" id="installment_1" value="<?php echo $row['installment_1']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-5">
                       <div class="form-group">
                         <label for="date_1">Date</label>
-                          <input class="form-control" name="date-1" type="date" value="" id="date_1">
+                          <input class="form-control" name="date-1" type="date" id="date_1" value="<?php echo $row['date_1']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-7">
                       <div class="form-group">
                         <label for="installment_2">Installment-2</label>
-                        <input type="number" step="any" min="0" name="installment-2" class="form-control" id="installment_2" placeholder="">
+                        <input type="number" step="any" min="0" name="installment-2" class="form-control" id="installment_2" value="<?php echo $row['installment_2']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-5">
                       <div class="form-group">
                         <label for="date_2">Date</label>
-                          <input class="form-control" name="date-2" type="date" value="" id="date_2">
+                          <input class="form-control" name="date-2" type="date" id="date_2" value="<?php echo $row['date_2']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-7">
                       <div class="form-group">
                         <label for="installment_3">Installment-3</label>
-                        <input type="number" step="any" min="0" name="installment-3" class="form-control" id="installment_3" placeholder="">
+                        <input type="number" step="any" min="0" name="installment-3" class="form-control" id="installment_3" value="<?php echo $row['installment_3']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-5">
                       <div class="form-group">
                         <label for="date_3">Date</label>
-                          <input class="form-control" name="date-3" type="date" value="" id="date-3">
+                          <input class="form-control" name="date-3" type="date" id="date-3" value="<?php echo $row['date_3']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-7">
                       <div class="form-group">
                         <label for="installment_4">Installment-4</label>
-                        <input type="number" step="any" min="0" name="installment-4" class="form-control" id="installment_4" placeholder="">
+                        <input type="number" step="any" min="0" name="installment-4" class="form-control" id="installment_4" value="<?php echo $row['installment_4']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-5">
                       <div class="form-group">
                         <label for="date_4">Date</label>
-                          <input class="form-control" name="date-4" type="date" value="" id="date_4">
+                          <input class="form-control" name="date-4" type="date" id="date_4" value="<?php echo $row['date_4']; ?>">
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="form-group row">
                       <label for="total_payment" class="col-2 col-form-label">Total</label>
                       <div class="col-10">
-                        <input class="form-control" type="" id="total_payment">
+                          <fieldset disabled>
+                              <input class="form-control" type="number" id="total_payment" value="<?php echo $row['payment_total']; ?>">                            
+                          </fieldset>
                       </div>
                     </div> 
                     </div>
                   </div>
-                </div>
-  
-                          
+                </div>    
             </div>
-                <button type="submit" class="btn btn-secondary btn-lg btn-block">Save Record</button>
+            <button type="submit" class="btn btn-secondary btn-lg btn-block">Update Record</button>
+          <?php
+          
+          }
+
+          ?>
           </form>
      
     </div>
