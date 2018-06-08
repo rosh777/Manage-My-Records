@@ -34,7 +34,7 @@
                   <h4 style="margin-top: 10px;">Customer Details</h4>
                   <div class="form-group">
                     <label for="shop_name">Shop Name</label>
-                    <input type="text" name="shop-name" class="form-control" id="shop_name" placeholder="Enter shop name">
+                    <input type="text" name="shop-name" class="form-control" id="shop_name" placeholder="Enter shop name" required>
                   </div>
                   <div class="form-group">
                     <label for="shop_add">Shop Address</label>
@@ -42,7 +42,7 @@
                   </div>
                   <div class="form-group">
                     <label for="mobile_no">Mobile Number</label>
-                    <input type="text" name="mobile-no" class="form-control" id="mobile_no" placeholder="">
+                    <input type="text" name="mobile-no" class="form-control" id="mobile_no" placeholder="" required>
                   </div>
                   <div class="form-group">
                     <label for="invoice_no">Invoice Number</label>
@@ -62,13 +62,13 @@
                     <div class="col-sm-7">
                       <div class="form-group">
                         <label for="adv_payment">Advance Payment</label>
-                        <input type="number" step="any" min="0" name="adv-payment" class="form-control" id="adv_payment" placeholder="">
+                        <input type="number" step="any" min="0" name="adv-payment" class="form-control" id="adv_payment" placeholder="" required>
                       </div>
                     </div>
                     <div class="col-sm-5">
                       <div class="form-group">
                         <label for="adv_date">Date</label>
-                          <input class="form-control" name="adv-date" type="date" value="" id="adv_date">
+                          <input class="form-control" name="adv-date" type="date" value="" id="adv_date" required>
                       </div>
                     </div>
                     <div class="col-sm-7">
