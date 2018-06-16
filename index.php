@@ -11,6 +11,26 @@
     <title>Admin.RonoltoInd</title>
   </head>
   <body>
+
+    <?php
+
+       session_start();
+
+       if(!$_SESSION["login_user"])
+       {
+          header("location: loginform.php?notloggedin= You are not administrator?");
+       }
+       else
+       {
+          echo "<h3>Welcome: ".$_SESSION["login_user"]."</h3>"; 
+          echo "<a href='logout.php'>Logout</a>"; 
+       }
+
+       
+        
+    ?>
+
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand">RonoltoIndia Admin</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,14 +139,14 @@
                           <input class="form-control" name="date-4" type="date" value="" id="date_4">
                       </div>
                     </div>
-                    <div class="col-sm-12">
+                    <!-- <div class="col-sm-12">
                       <div class="form-group row">
                       <label for="total_payment" class="col-2 col-form-label">Total</label>
                       <div class="col-10">
                         <input class="form-control" type="" id="total_payment">
                       </div>
                     </div> 
-                    </div>
+                    </div> -->
                   </div>
                 </div>
   

@@ -1,12 +1,4 @@
-#myInput{
-  background-image: url('img/search-icon1.png');
-  background-position: 5px 7px;
-  background-repeat: no-repeat;
-  width: 30%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 2px solid #9A1313;
-  margin-bottom: 12px;
-  border-radius: 6px;
-
+#login-card{
+    width: 420px;
+    margin: 150px auto;
 }
