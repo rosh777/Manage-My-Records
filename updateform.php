@@ -11,6 +11,22 @@
     <title>Update.Record</title>
   </head>
   <body>
+    <?php
+
+       session_start();
+
+       if(!$_SESSION["login_user"])
+       {
+          header("location: loginform.php?notloggedin= You are not administrator?");
+       }
+       else
+       {
+
+        $_SESSION["login_user"]; 
+           
+       } 
+
+    ?>
 
     <?php
 
@@ -24,23 +40,32 @@
 
     ?>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand">RonoltoIndia Admin</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li>
-            <a class="nav-link" href="index.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="display.php">History</a>
-          </li>
-        </ul>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.php">RonoltoIndia Admin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="display.php">History</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <?php  echo "".$_SESSION["login_user"].""; ?>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="logout.php">Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
     <div class="container">
-      <h3 style="text-align: center; margin-top: 10px;">Update Record</h3>
+      <h3 style="text-align: center; margin-top: 10px; text-decoration: underline;">Update Record</h3>
           <form action="update.php" method="get">
             <?php
             while($row = mysqli_fetch_assoc($result)){
@@ -152,7 +177,7 @@
                   </div>
                 </div>    
             </div>
-            <button type="submit" class="btn btn-secondary btn-lg btn-block">Update Record</button>
+            <button type="submit" class="btn btn-dark btn-lg btn-block">Update Record</button>
           <?php
           
           }

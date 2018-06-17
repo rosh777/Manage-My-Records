@@ -11,7 +11,21 @@
     <title>Record History</title>
   </head>
   <body>
+    <?php
 
+       session_start();
+
+       if(!$_SESSION["login_user"])
+       {
+          header("location: loginform.php?notloggedin= You are not administrator?");
+       }
+       else
+       {
+
+        $_SESSION["login_user"]; 
+           
+       }  
+    ?>
     <?php
 
       include('dbconnect.php');
@@ -23,23 +37,32 @@
 
     ?>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand">RonoltoIndia Admin</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.php">RonoltoIndia Admin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li>
-            <a class="nav-link" href="index.php">Home</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="display.php">History</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <?php  echo "".$_SESSION["login_user"].""; ?>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="logout.php">Logout</a>
+            </div>
+          </li>
         </ul>
+      </div>
     </nav>
     <div class="container">
-      <h3 style="text-align: center; margin-top: 10px;">All Records</h3>
+      <h3 style="text-align: center; margin-top: 10px; text-decoration: underline;">All Records</h3>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1"><img src="img/search-icon.png"></span>

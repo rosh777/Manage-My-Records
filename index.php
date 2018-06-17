@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <title>Admin.RonoltoInd</title>
   </head>
@@ -22,32 +23,39 @@
        }
        else
        {
-          echo "<h3>Welcome: ".$_SESSION["login_user"]."</h3>"; 
-          echo "<a href='logout.php'>Logout</a>"; 
+
+        $_SESSION["login_user"]; 
+           
        }
 
-       
-        
     ?>
 
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand">RonoltoIndia Admin</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.php">RonoltoIndia Admin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li>
-            <a class="nav-link" href="index.php">Home</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="display.php">History</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <?php  echo "".$_SESSION["login_user"].""; ?>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="logout.php">Logout</a>
+            </div>
+          </li>
         </ul>
+      </div>
     </nav>
     <div class="container">
-      <h3 style="text-align: center; margin-top: 10px;">Add New Records</h3>
+      <h3 style="text-align: center; margin-top: 10px; text-decoration: underline;">Add New Records</h3>
           <form action="insert.php" method="post">
             <div class="row">
                 <div class="col-sm-6">
@@ -152,7 +160,7 @@
   
                           
             </div>
-                <button type="submit" class="btn btn-secondary btn-lg btn-block">Save Record</button>
+                <button type="submit" class="btn btn-dark btn-lg btn-block">Save Record</button>
           </form>
      
     </div>
